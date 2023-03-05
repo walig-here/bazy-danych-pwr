@@ -1,0 +1,172 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[OT4]{fontenc}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\newcommand{\h}[1]{\noindent \bf #1 \rm \\ \noindent}
+\newcommand{\italic}[1]{\it #1 \rm}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{lightgray},   
+	commentstyle=\color{teal},
+	keywordstyle=\color{blue},
+	numberstyle=\tiny,
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+}
+\lstset{style=mystyle}
+
+\begin{document}
+
+\begin{center}
+	\LARGE
+	Bazy Danych \\
+	\large
+	LABORATORIUM 1 
+\end{center}
+\vspace{1cm}
+
+\h{Operatory warunkowe:}
+W SQL mamy do dyspozycji operatory warunkowe:
+\begin{itemize}
+	\item $=$ - równości
+	\item $!=$ lub $<>$ - nierówności
+	\item $>$ -  ostrej większości
+	\item $>=$ - nieostrej większości
+	\item $<$ - ostrej mniejszości
+	\item $<=$ - nieostrej mniejszości 
+	\item $BETWEEN$ $<wartosc>$ $AND$ $<wartosc>$ - przynależności do przedziału
+	\item $LIKE$ $<wzorzec>$ - spełnianie wzorca
+	\item $IN$ $(<wartosc>, <wartosc>, ...)$ - przynależności do zadanego zbioru
+	\item $IS$ $NULL$ - zawierania wartości NULL
+\end{itemize}
+\vspace{5mm}
+
+\h{Operatory logiczne:}
+W SQL mamy dostęp do operatorów logicznych:
+\begin{itemize}
+	\item AND
+	\item OR
+	\item NOT
+\end{itemize}
+\vspace{5mm}
+
+\h{Komentarze w SQL:}
+Aby wykomenotwać linię w SQL należy wprowadzić dwa znaki minusa po sobie.
+\begin{lstlisting}[language=SQL]
+-- komentarz jednolinijkowy
+\end{lstlisting}
+
+\noindent
+Komentarz wieloliniowy otwiera się znakiem $'/*'$ a zamyka znakiem $'*/'$.
+\begin{lstlisting}[language=SQL]
+/* 
+	Komentarz
+	wieloliniowy
+*/
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Typy danych w SQL:}
+W języku SQL mamy dostęp do poniższych typów danych:
+\begin{itemize}
+	\item \italic{INTEGER} - liczby całkowite
+	\item \italic{FLOAT} - liczba zmiennoprzecinkowa
+	\item \italic{DECIMAL(precyzja, skala)} - liczba zmiennoprzecinkowa, której precyzję (ilość cyfr w liczbie) oraz skalę (ilość miejsc po przecinku) można dowolnie ustalić.
+	\item \italic{CHAR(długość)} - ciąg znaków o stałej długości podanej 
+	\item \italic{VARCHAR(maksymalna długość)} - przechowuje ciąg znaków o zmiennej długości (ale zawsze nie większej niż długość maksymalna)
+	\item \italic{BOOLEAN} - wartości logiczne
+	\item \italic{DATE} - daty
+	\item \italic{TIME} - godziny
+	\item \italic{TIMESTAMP} - daty i godziny
+	\item \italic{BLOB} - dane binarne czyli obrazy, pliki dźwiękowe itd. 
+\end{itemize} 
+\vspace{5mm}
+
+\h{Tworzenie nowej tabeli:}
+Aby stworzyć nową tabelę należy użyć słowa kluczowego CREATE TABLE.
+
+\begin{lstlisting}[language=SQL]
+CREATE TABLE <nazwa tabeli> (
+	<nazwa kolumny> <typ danych> [opcjonalna flaga kolumny],
+	<nazwa kolumny> <typ danych> [opcjonalna flaga kolumny],
+	...
+	<nazwa kolumny> <typ danych> [opcjonalna flaga kolumny],
+	[opcjonalne flagi tabeli]
+);
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Usuwanie tabeli:}
+Aby usunąć tabelę należy użyć słowa kluczowego DROP TABLE.
+\begin{lstlisting}[language=SQL]
+DROP TABLE <nazwa tabeli>;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Dodawanie rekordu do tabeli:}
+Dodać rekord do tabeli można za pomocą słowa kluczowego INSERT INTO. W komendzie specyfikuje się nazwy kolumn jakie mają zostać uzupełnione oraz wartości, którymi będą uzupełnione.
+\begin{lstlisting}[language=SQL]
+INSERT INTO <nazwa tabeli> 
+( <nazwa kolumny>, ... , <nazwa kolumny> )
+VALUES 
+( <wartosc>, ... , <wartosc> );
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Polecenie DESCRIBE:}
+Polecenie DESCRIBE służy do wyświetlenie informacji o strukturze tabeli i jej kolumnach. Zwraca ona dane:
+\begin{itemize}
+	\item \italic{Name} - nazwa kolumny
+	\item \italic{Type} - typ danych przechowywanych w kolumnie
+	\item \italic{Null} - informacja, czy kolumna może przyjmować wartość NULL
+	\item \italic{Key} - informacja, czy kolumna jest kluczem (PRIMARY lub FOREIGN KEY)
+	\item \italic{Default} - wartośc domyślna kolumny
+\end{itemize}
+\vspace{5mm}
+
+\begin{lstlisting}[language=SQL]
+DESCRIBE <nazwa tabeli>;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Wyrażenie SELECT:}
+Wyrażenie SELECT służy do pobierania danych z bazy danych. Jest to narzędzie do wyszukiwania, wybierania i pobierania określonych wartości z jednej lub wielu tabel w bazie danych.
+\begin{lstlisting}[language=SQL]
+SELECT <nazwa kolumny>, ... , <nazwa kolumny>
+FROM <nazwa tabeli>
+WHERE [warunek]
+GROUP BY [nazwa kolumny], ... , [nazwa kolumny]
+HAVING [warunek]
+ORDER BY [kolumna];
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Warunek WHERE:}
+Warunek WHERE służy do wybrania wyłącznie tych rekordów, które spełniają określone kryteria. W warunku występującym po warunku WHERE można zawrzeć wyrażenie logiczne zawierające operatory porównania, porównania liczbowego. Można również użyć operatorów logicznych AND, OR i NOT, które pozwalają łączenie wielu warunków w jedną całość.
+\begin{lstlisting}[language=SQL]
+	SELECT * -- gwiazdka oznacza wybranie wszytskich kolumn
+	FROM produkty
+	WHERE cena > 10;
+\end{lstlisting}
+\vspace{5mm}
+
+
+
+\end{document}

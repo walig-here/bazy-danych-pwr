@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7.26 32-bit) (preloaded format=pdflatex 2022.11.7)  5 MAR 2023 02:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7.26 32-bit) (preloaded format=pdflatex 2022.11.7)  5 MAR 2023 12:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -334,45 +334,46 @@ LaTeX Font Info:    External font `plex10' loaded for size
 LaTeX Font Info:    External font `plex10' loaded for size
 (Font)              <6> on input line 48.
 
+[1
+
+{C:/Users/Dawid/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 (C:\Users\Dawid\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 
-72.
+83.
 
 (C:\Users\Dawid\AppData\Local\Programs\MiKTeX\tex/latex/polski\ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-[1
-
-{C:/Users/Dawid/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-[3] [4] (lab1.aux) ) 
+[2] [3] [4] [5] (lab1.aux) ) 
 Here is how much of TeX's memory you used:
- 5644 strings out of 475380
- 83875 string characters out of 2776772
- 675867 words of memory out of 3000000
- 26974 multiletter control sequences out of 15000+600000
+ 5647 strings out of 475380
+ 83912 string characters out of 2776772
+ 707429 words of memory out of 3000000
+ 26977 multiletter control sequences out of 15000+600000
  476705 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,5n,76p,388b,1366s stack positions out of 10000i,1000n,20000p,200000b,80000s
-{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/enc/dvi
-ps/pl/plit.enc}{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl
-/plms.enc}{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/pltt
-.enc}{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plrm.enc}
-{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.enc} <C:\
-Users\Dawid\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk
-><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plbx12.pfb
-><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plmi12.pfb
-><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr12.pfb>
-<C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr17.pfb><
-C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6.pfb><C:
-/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy10.pfb><C:
-/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy8.pfb><C:/
-Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti12.pfb><C:/
-Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt10.pfb>
-Output written on lab1.pdf (4 pages, 91018 bytes).
+{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts
+/enc/dvips/pl/plms.enc}{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/enc/
+dvips/pl/pltt.enc}{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
+/pl/plrm.enc}{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/p
+lit.enc}{C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/pl/plmi.e
+nc} <C:\Users\Dawid\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcr
+m1200.pk><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pl
+bx12.pfb><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pl
+mi12.pfb><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pl
+r12.pfb><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr
+17.pfb><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plr6
+.pfb><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy10
+.pfb><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plsy8.
+pfb><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/plti12.
+pfb><C:/Users/Dawid/AppData/Local/Programs/MiKTeX/fonts/type1/public/pl/pltt10.
+pfb>
+Output written on lab1.pdf (5 pages, 95752 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
+ 73 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

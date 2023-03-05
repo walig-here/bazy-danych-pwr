@@ -67,11 +67,23 @@ W SQL mamy dostęp do operatorów logicznych:
 \end{itemize}
 \vspace{5mm}
 
+\h{Operacje agregujące (statystyczne):}
+Operacje wykonywane na kolumnach. W SQL dostępne są operacje statystyczne:
+\begin{itemize}
+	\item \italic{SUM(kolumna)} - oblicza sumę wartości w danej kolumnie
+	\item \italic{AVG(kolumna)} - oblicza średniej wartości w danej kolumnie
+	\item \italic{MIN(kolumna)} - służy do wyznaczenia najmniejszej wartości w danej kolumnie
+	\item \italic{MAX(kolumna)} - służy do wyznaczenia największej wartości w danej kolumnie
+	\item \italic{COUNT(kolumna)} - służy do zliczenia liczby wierszy w danej kolumnie
+\end{itemize}
+\vspace{5mm}
+
 \h{Komentarze w SQL:}
 Aby wykomenotwać linię w SQL należy wprowadzić dwa znaki minusa po sobie.
 \begin{lstlisting}[language=SQL]
 -- komentarz jednolinijkowy
 \end{lstlisting}
+\vspace{5mm}
 
 \noindent
 Komentarz wieloliniowy otwiera się znakiem $'/*'$ a zamyka znakiem $'*/'$.
@@ -154,19 +166,60 @@ FROM <nazwa tabeli>
 WHERE [warunek]
 GROUP BY [nazwa kolumny], ... , [nazwa kolumny]
 HAVING [warunek]
-ORDER BY [kolumna];
+ORDER BY [kolumna + ASC|DESC], ... , [kolumna + ASC|DESC];
 \end{lstlisting}
 \vspace{5mm}
 
 \h{Warunek WHERE:}
 Warunek WHERE służy do wybrania wyłącznie tych rekordów, które spełniają określone kryteria. W warunku występującym po warunku WHERE można zawrzeć wyrażenie logiczne zawierające operatory porównania, porównania liczbowego. Można również użyć operatorów logicznych AND, OR i NOT, które pozwalają łączenie wielu warunków w jedną całość.
 \begin{lstlisting}[language=SQL]
-	SELECT * -- gwiazdka oznacza wybranie wszytskich kolumn
-	FROM produkty
-	WHERE cena > 10;
+SELECT * -- gwiazdka oznacza wybranie wszytskich kolumn
+FROM produkty
+WHERE cena > 10;
 \end{lstlisting}
 \vspace{5mm}
 
+\h{Klauzula ORDER BY:}
+Klauzulę ORDER BY używa się do posortowania wyników zapytania SELECT. Sortowanie może odbyć się względem jednej lub wielu kolumn. W wypadku sortowania po wielu kolumnach priorytet sortowania jest największy po kolumnie najbardziej po lewej stronie. Do nazwy kolumny można dodać flagę ASC lub DESC. Oznaczają one kolejna sortowanie rosnąco i malejąco.
+\begin{lstlisting}[language=SQL]
+SELECT *
+FROM produkty
+ORDER BY cena ASC;
+\end{lstlisting}
+\vspace{5mm}
 
+\h{Polecenie SELECT DISTINCT:}
+Polecenie służące do wyszukania i wyświetlenia wszystkich unikalnych wartości lub kombinacji wartości ze wskazanej kolumny lub grupy kolumn. Przydatne, gdy chcemy uniknąć niepotrzebnych, powtarzających się wartości przy wyszukiwaniu danych z tabeli.
+\begin{lstlisting}[language=SQL]
+SELECT DISTINCT <nazwa kolumny>, ... , <nazwa kolumny>
+FROM <nazwa tabeli>
+WHERE [warunek]
+GROUP BY [nazwa kolumny], ... , [nazwa kolumny]
+HAVING [warunek]
+ORDER BY [kolumna + ASC|DESC], ... , [kolumna + ASC|DESC];
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Klauzula AS:}
+Klauzulę AS można użyć do zmiany nazwy wyświetlanej  w wyniku zapytania SELECT kolumny.
+\begin{lstlisting}[language=SQL]
+SELECT 
+	<nazwa kolumny> AS <nowa nazwa>, 
+	... , 
+	<nazwa kolumny> AS <nowa nazwa>
+FROM <nazwa tabeli>;
+\end{lstlisting}
+\vspace{5mm}
+
+\noindent
+Można jej także użyć do ustalenia nazwy wyrażenia użytego w zapytaniu SELECT. W przeciwnym wypadku będzie ono nazwane tak jak użyty do jego wyliczenia wzór.
+\begin{lstlisting}[language=SQL]
+	SELECT 
+	<wyrazenie> AS <nazwa wyrazenia>, 
+	... , 
+	<wyrazenie> AS <nazwa wyrazenia>
+	FROM <nazwa tabeli>;
+\end{lstlisting}
+\vspace{5mm}
 
 \end{document}

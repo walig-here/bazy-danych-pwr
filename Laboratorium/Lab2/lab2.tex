@@ -221,6 +221,70 @@ SELECT <data> - <data> FROM DUAL
 \vspace{5mm}
 
 \newpage
-\h{Operowanie na NULL-ach:}
+\h{Operator IS NULL:}
+Operator służący do określania czy wartość w kolumnie jest null-em.
+\begin{lstlisting}[language=SQL]
+SELECT <kolumny> FROM <tabela> WHERE IS NULL;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Operator IS NOT NULL:}
+Operator służący do określania czy wartość w kolumnie nie jest NULL-em.
+\begin{lstlisting}[language=SQL]
+	SELECT <kolumny> FROM <tabela> WHERE IS NOT NULL;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja COALESCE:}
+Funkcja podmieniająca występujące w zadanych kolumnach wartości NULL na wartość pierwszej z kolumn (albo stałych) z zadanego zbioru, która nie jest NULL-em.
+\begin{lstlisting}[language=SQL]
+-- Gdy manager_id bedzie NULL to zastap go salary badz na odwrot
+SELECT COALESCE(manager_id, salary) FROM employeees;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja NULLIF:}
+Funkcja zwracająca NULL, gdy dwie zadane w niej wartości są równe. W przeciwnym wypadku zwraca wartość pierwszą.
+\begin{lstlisting}[language=SQL]
+SELECT  <kolumny>
+FROM    <tabela>
+WHERE   NULLIF(<kolumna/kolumna>, <kolumna/wartosc>) IS NULL;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Porównania z NULL-em:}
+Porównania z zawierające NULL zawsze dadzą wynik NULL.\\
+
+\h{Operacje arytmetyczne z NULL-em:}
+Operacje arytmetyczne, w których co najmniej jeden argument jest NULL-em zwracają NULL.\\
+
+\h{Funkcje agregujące z NULL-em:}
+Funkcje agregujące po prostu ignorują komórki zawierające wartości NULL. Przykładowo funkcja COUNT nie zlicza takich komórek.\\
+
+\h{Funkcje logiczne z NULL-em:}
+Jeżeli argumentem funkcji logicznej jest NULL to zwraca ona NULL.\\
+
+\newpage
+\h{Funkcja NVL:}
+Funkcja podmienia wartość pierwszego argumentu na drugi jeżeli pierwszy jest NULL-em.
+\begin{lstlisting}[language=SQL]
+SELECT 
+	NVL(<kolumna/wartosc>, <kolumna/wartosc>) 
+FROM <tabela>;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja NVL2:}
+Funkcja podmienia wartość pierwszego argumentu na drugi jeżeli pierwszy nie jest NULL-em lub na trzeci gdy pierwszy jest NULL-em.
+\begin{lstlisting}[language=SQL]
+SELECT 
+	NVL2(
+		<kolumna/wartosc>, 
+		<wartosc gdy pierwszy nie NULL>,
+		<wartosc gdy pierwszy NULL>
+	) 
+FROM <tabela>;
+\end{lstlisting}
+\vspace{5mm}
 	
 \end{document}

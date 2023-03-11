@@ -1,0 +1,226 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[OT4]{fontenc}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\newcommand{\h}[1]{\noindent \bf #1 \rm \\ \noindent}
+\newcommand{\italic}[1]{\it #1 \rm}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{lightgray},   
+	commentstyle=\color{teal},
+	keywordstyle=\color{blue},
+	numberstyle=\tiny,
+	stringstyle=\color{purple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+}
+\lstset{style=mystyle}
+
+\begin{document}
+	
+\begin{center}
+	\LARGE
+	Bazy Danych \\
+	\large
+	LABORATORIUM 2 
+\end{center}
+\vspace{1cm}	
+	
+\h{Funkcja STDDEV:}
+Funkcja STDDEV służy do obliczania odchylenia standardowego wybranych komórek z danej kolumny.
+\begin{lstlisting}[language=SQL]
+SELECT STDDEV(<kolumna>) FROM <nazwa tabeli>;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja VARIANCE:}
+Funkcja VARIANCE służy do obliczania wariancji wybranych komórek z danej kolumny.
+\begin{lstlisting}[language=SQL]
+SELECT VARIANCE(<kolumna>) FROM <tabela>;
+\end{lstlisting}
+\vspace{5mm}	
+
+\h{Klauzula GROUP BY:}
+Klauzula GROUP BY może zostać użyta do grupowania rekordów według wartości poszczególnych kolumny/kolumn. Pozwala to na wyliczanie wyrażeń agregujących dla określonych grup w danej tabeli.
+\begin{lstlisting}[language=SQL]
+-- Wyliczenie sredniej pensji wedlug menedzera i departamentu, sortowane rosnaco po sredniej pensji
+SELECT 
+	manager_id 	  AS "Menedzer", 
+	department_id AS "Departament", 
+	AVG(salary)   AS "Srednia pensja"
+FROM 
+	employees
+GROUP BY
+	manager_id,
+	department_id
+ORDER BY
+	AVG(salary);
+\end{lstlisting}
+\vspace{5mm}
+
+\newpage
+\h{Klauzula HAVING:}
+Klauzula HAVING jest klauzulą warunkową dla wyników funkcji agregujących. Często jest używana wraz z GROUP BY. Nie można użyć HAVING dla zwykłych kolumn, a WHERE do kolumn będących wynikami grupowania.
+\begin{lstlisting}[language=SQL]
+-- Wyliczenie sredniej pensji pracownikow, zarabiajacych ponizej 3000, mniejszej niz 5000, wedlug menedzera i departamentu, sortowane rosnaco po sredniej pensji
+SELECT 
+	manager_id 	  AS "Menedzer", 
+	department_id AS "Departament", 
+	AVG(salary)   AS "Srednia pensja"
+FROM 
+	employees
+WHERE
+	salary < 3000
+GROUP BY
+	manager_id,
+	department_id
+HAVING
+	AVG(salary) < 5000
+ORDER BY
+	AVG(salary);
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja SYSDATE:}
+Funkcja SYSDATE zwraca aktualną datę systemową. Wymagane jest jednak podanie tabeli, aby się do niej dostać. Przykładowo można użyć tabeli dummy o nazwie DUAL.
+\begin{lstlisting}[language=SQL]
+SELECT SYSDATE FROM <tabela>; -- Pobranie daty systemowej
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja TO\_DATE}
+Funkcja TO\_DATE konwertuje zadany ciąg znaków o zadanym formacie na datę. 
+\begin{lstlisting}[language=SQL]
+SELECT 
+	TO_DATE(
+		<ciag znakow>, 
+		<format daty>
+	)
+FROM
+	<tabela>;
+\end{lstlisting}
+\vspace{5mm}
+
+\newpage
+\h{Funkcja ADD\_MONTHS:}
+Funkcja ADD\_MONTHS dodaje do zadanej daty zadaną liczbę miesięcy.
+\begin{lstlisting}[language=SQL]
+SELECT
+	ADD_MONTHS(
+		<data>,
+		<ilosc miesiecy>
+	)
+FROM
+	tabela;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja MONTHS\_BETWEEN:}
+Funkcja obliczająca różnicę między dwoma datami w miesiącach.
+\begin{lstlisting}[language=SQL]
+SELECT
+	MONTHS_BETWEEN(
+		<data 1>,
+		<data 2>
+	)
+FROM
+	<tabela>;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja EXTRACT:}
+Funkcja pozwalająca na wyciągnięcie roku, dnia lub miesiąca z daty.
+\begin{lstlisting}[language=SQL]
+SELECT EXTRACT(DAY FROM <data>) FROM dual; -- wyjmij dzien
+SELECT EXTRACT(MONTH FROM <data>) FROM dual; -- wyjmij mies.
+SELECT EXTRACT(YEAR FROM <data>) FROM dual; -- wyjmij rok
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja TO\_CHAR:}
+Funkcja konwertująca zadaną datę na ciąg znaków o zadanym formacie.
+\begin{lstlisting}[language=SQL]
+SELECT 
+	TO_CHAR(
+		<data>,
+		<format>
+	)
+FROM
+	<tabela>;
+\end{lstlisting}
+\vspace{5mm}
+
+\newpage
+\h{Funkcja TRUNC:}
+Obcina datę do pierwszego dnia wskazanej jednostki czasu. Na przykład pierwszego dnia miesiąca, roku, dnia, tygodnia, kwartału.
+\begin{lstlisting}[language=SQL]
+SELECT
+	TRUNC(
+		<data>,
+		<ograniczenie>
+	)
+FROM
+	<tabela>;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja LAST\_DAY:}
+Funkcja zwracająca ostatni dzień miesiąca, obecnego we wskazanej dacie.
+\begin{lstlisting}[language=SQL]
+SELECT
+	LAST_DAY(<data>)
+FROM
+	<tabela>;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Funkcja NEXT\_DAY:}
+Funkcja zwracająca datę, w której wystąpi najbliższy zadany dzień tygodnia (względem zadanej daty).
+\begin{lstlisting}[language=SQL]
+-- Zwraca date najblizszego dnia tygodnia od zadanej daty
+SELECT
+	NEXT_DAY(
+		<data>,
+		<numer dnia tygodnia>
+	)
+FROM
+	<tabela>;
+\end{lstlisting}
+\vspace{5mm}
+
+\h{Arytmetyka dat:}
+Do daty można dodać lub odjąć stałą, aby dodać lub objąć od/do niej dni.
+\begin{lstlisting}[language=SQL]
+-- Zmiana daty o pewna ilosc dni
+SELECT <data>+/-<stala> FROM <tabela>;
+\end{lstlisting}
+\vspace{5mm}
+
+\noindent
+Można obliczyć różnicę między datami w dniach za pomocą operacji odejmowania.
+\begin{lstlisting}[language=SQL]
+-- Zmiana daty o pewna ilosc dni
+SELECT <data> - <data> FROM DUAL
+\end{lstlisting}
+\vspace{5mm}
+
+\newpage
+\h{Operowanie na NULL-ach:}
+	
+\end{document}
